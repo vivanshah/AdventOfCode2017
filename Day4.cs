@@ -9,7 +9,7 @@ namespace AdventOfCode2017
 {
     static class Day4
     {
-        public static void Calculate1()
+        public static string Calculate1()
         {
             Console.WriteLine("Day4 part 1");
             var lines = File.ReadAllLines("..\\..\\Input\\Day4.txt");
@@ -23,9 +23,10 @@ namespace AdventOfCode2017
                 }
             }
             Console.WriteLine(count);
+            return count.ToString();
         }
 
-        public static void Calculate2()
+        public static string Calculate2()
         {
             Console.WriteLine("Day4 part 2");
             var lines = File.ReadAllLines("..\\..\\Input\\Day4.txt");
@@ -40,6 +41,7 @@ namespace AdventOfCode2017
                 }
             }
             Console.WriteLine(count);
+            return count.ToString();
         }
 
     }

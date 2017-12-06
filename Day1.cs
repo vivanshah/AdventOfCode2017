@@ -9,9 +9,9 @@ namespace AdventOfCode2017
 {
     static class Day1
     {
-        public static void Calculate1()
+        public static string Calculate1()
         {
-            var lines = File.ReadAllLines("..\\..\\Input\\Day1-1.txt");
+            var lines = File.ReadAllLines("..\\..\\Input\\Day1.txt");
             var digits = lines[0];
             //var digits = "1122";
             var sum = 0;
@@ -25,11 +25,12 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine(sum);
+            return sum.ToString();
         }
 
-        public static void Calculate2()
+        public static string Calculate2()
         {
-            var lines = File.ReadAllLines("..\\..\\Input\\Day1-1.txt");
+            var lines = File.ReadAllLines("..\\..\\Input\\Day1.txt");
             var digits = lines[0];
             //var digits = "123425";
             var sum = 0;
@@ -43,6 +44,7 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine(sum);
+            return sum.ToString();
 
         }
     }

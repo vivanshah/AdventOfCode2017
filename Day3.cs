@@ -9,17 +9,17 @@ namespace AdventOfCode2017
 {
     static class Day3
     {
-        public static void Calculate1()
+        public static string Calculate1()
         {
             //solved pen & paper and then backported spiral generation from part 2 later on :S
             Console.WriteLine("Day3 part 1");
             var input = 361527;
 
-            int[,] big = new int[10000, 10000];
+            int[,] big = new int[400, 400];
 
 
-            int x = 10000 / 2;
-            int y = 10000 / 2;
+            int x = 400 / 2;
+            int y = 400 / 2;
             big[x, y] = 1;
             int h = 1;
             int count = 2;
@@ -55,11 +55,12 @@ namespace AdventOfCode2017
                 }
                 v++;
             }
-
-            Console.WriteLine((Math.Abs((10000/2) - x)) + Math.Abs((10000/2) - y));
+            var result = (Math.Abs((400 / 2) - x)) + Math.Abs((400 / 2) - y);
+            Console.WriteLine(result);
+            return result.ToString();
         }
 
-        public static void Calculate2()
+        public static string Calculate2()
         {
             Console.WriteLine("Day3 part 2");
             var input = 361527;
@@ -102,6 +103,7 @@ namespace AdventOfCode2017
             }
 
             Console.WriteLine(sum);
+            return sum.ToString();
         }
 
         public static int GetSum(int[,] big, int x, int y)
