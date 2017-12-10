@@ -33,20 +33,31 @@ namespace AdventOfCode2017
 
             var today = System.Reflection.Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(t => t.Name.Equals("Day"+day));
 
-            sw.Start();
-            var part1 = today.GetMethod("Calculate1")?.Invoke(null, null);
-            sw.Stop();
-            Clipboard.SetText(part1.ToString());
-            Console.WriteLine("part 1 value in clipboard, completed in " + sw.ElapsedMilliseconds + " ms");
+             sw.Start();
+             var part1 = today.GetMethod("Calculate1")?.Invoke(null, null);
+             sw.Stop();
+             Console.WriteLine(part1);
+             Clipboard.SetText(part1.ToString());
+             Console.WriteLine("part 1 value in clipboard, completed in " + sw.ElapsedMilliseconds + " ms");
             Console.ReadLine();
-
             sw.Restart();
-            var part2 = today.GetMethod("Calculate2")?.Invoke(null, null);
+            string part2Result = null;
+            var part2 = today.GetMethod("Calculate2");
+            if(part2 != null)
+            {
+                part2Result = (string)part2.Invoke(null, null);
+            }
             sw.Stop();
-            Clipboard.SetText(part2.ToString());
-            Console.WriteLine("part 2 value in clipboard, completed in " + sw.ElapsedMilliseconds + " ms");
-            Console.WriteLine("\r\n\r\nFinished");
-            Console.ReadLine();
+            if (part2Result != null)
+            {
+                Console.WriteLine(part2Result);
+                Clipboard.SetText(part2Result.ToString());
+                Console.WriteLine("part 2 value in clipboard, completed in " + sw.ElapsedMilliseconds + " ms");
+                Console.WriteLine("\r\n\r\nFinished");
+                Console.ReadLine();
+            }
+
+            
         }
     }
 }
