@@ -60,16 +60,12 @@ namespace AdventOfCode2017
             var lines = File.ReadAllLines("..\\..\\Input\\Day10.txt");
             int skipSize = 0;
             var line = lines[0];
-            var bytes = System.Text.Encoding.UTF8.GetBytes(line.ToCharArray()).ToList();
+            var bytes = Encoding.UTF8.GetBytes(line).ToList();
             bytes.AddRange(new List<byte>() { 17, 31, 73, 47, 23 });
             int c = 0;
             var words = bytes.Select(x => Convert.ToInt32(x)).ToArray();
-            var array = new int[256];
+            var array = Enumerable.Range(0, 256).ToArray();
 
-            for (int x = 0; x < array.Length; x++)
-            {
-                array[x] = x;
-            }
             for (int z = 0; z < 64; z++)
             {
                 for (int x = 0; x < words.Length; x++)
@@ -109,7 +105,7 @@ namespace AdventOfCode2017
                 }
             }
 
-            result = string.Join("", denseHash.Select(x => x.ToString("X")));
+            result = string.Join("", denseHash.Select(x => x.ToString("X"))).ToLower();
             return result;
         }
     }
