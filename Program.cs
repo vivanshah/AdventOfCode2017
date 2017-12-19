@@ -45,7 +45,7 @@ namespace AdventOfCode2017
             var part2 = today.GetMethod("Calculate2");
             if(part2 != null)
             {
-                part2Result = (string)part2.Invoke(null, null);
+                part2Result = Convert.ToString(part2.Invoke(null, null));
             }
             sw.Stop();
             if (part2Result != null)

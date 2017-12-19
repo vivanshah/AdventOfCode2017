@@ -53,13 +53,13 @@ namespace AdventOfCode2017
             return result;
         }
 
-        public static string Calculate2()
+        public static string Calculate2(string input = null)
         {
-            Console.WriteLine("Day10 part 2");
+           // Console.WriteLine("Day10 part 2");
             string result = null;
             var lines = File.ReadAllLines("..\\..\\Input\\Day10.txt");
             int skipSize = 0;
-            var line = lines[0];
+            var line = input ?? lines[0];
             var bytes = Encoding.UTF8.GetBytes(line).ToList();
             bytes.AddRange(new List<byte>() { 17, 31, 73, 47, 23 });
             int c = 0;
@@ -105,7 +105,7 @@ namespace AdventOfCode2017
                 }
             }
 
-            result = string.Join("", denseHash.Select(x => x.ToString("X"))).ToLower();
+            result = string.Join("", denseHash.Select(x => x.ToString("X2"))).ToLower();
             return result;
         }
     }
