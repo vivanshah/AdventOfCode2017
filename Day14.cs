@@ -28,57 +28,9 @@ namespace AdventOfCode2017
 
             }
 
-
-            int numGroups = countIslands(disk);
-
-            return numGroups.ToString() ;
+            return count.ToString();
         }
 
-        public static int countIslands(int[,] sea)
-        {
-            bool[,] visited = new bool[sea.GetLength(0),sea.GetLength(1)];
-            for (int i = 0; i < sea.GetLength(0); i++)
-            {
-                for (int j = 0; j < sea.GetLength(1); j++)
-                {
-                    visited[i,j] = false;
-		    	}
-            }
-		    return countIslands(sea, visited);
-	    }
-	
-	public static int countIslands(int[,] sea, bool[,] visited)
-{
-    int numOfIslands = 0;
-    for (int i = 0; i < sea.GetLength(0); i++)
-    {
-        for (int j = 0; j < sea.GetLength(1); j++)
-        {
-            if (visited[i,j])
-
-                    continue;
-            if (sea[i,j] == 0)
-            {
-                visited[i,j] = true;
-					continue;
-				}
-				numOfIslands++;
-
-                floodFill(i, j, sea, visited); 
-			}
-		}
-		return numOfIslands;
-	}
-	
-	public static void floodFill(int row, int col, int[,] sea, bool[,] visited)
-{
-    if (sea[row,col] == 0 || visited[row,col]) return;
-    visited[row,col] = true;
-		if (col<sea.GetLength(1) - 1) floodFill(row, col+1, sea, visited);
-		if (row<sea.GetLength(0) - 1) floodFill(row+1, col, sea, visited);
-		if (col > 0) floodFill(row, col-1, sea, visited);
-		if (row > 0) floodFill(row-1, col, sea, visited);
-	}
 
         public static int CountBits(string input, int row)
         {
@@ -99,8 +51,67 @@ namespace AdventOfCode2017
         {
             Console.WriteLine("Day14 part 2");
             var lines = File.ReadAllLines("..\\..\\Input\\Day14.txt");
+            //var input = lines[0] + "-";
+            var input = "hxtvlmkl-";
+            int count = 0;
+            for (int x = 0; x < 128; x++)
+            {
+                var hash = Day10.Calculate2(input + x.ToString());
 
-            return string.Empty;
+                count += CountBits(hash, x);
+
+            }
+
+
+            int numGroups = countIslands(disk);
+
+            return numGroups.ToString();
+        }
+        public static int countIslands(int[,] sea)
+        {
+            bool[,] visited = new bool[sea.GetLength(0), sea.GetLength(1)];
+            for (int i = 0; i < sea.GetLength(0); i++)
+            {
+                for (int j = 0; j < sea.GetLength(1); j++)
+                {
+                    visited[i, j] = false;
+                }
+            }
+            return countIslands(sea, visited);
+        }
+
+        public static int countIslands(int[,] sea, bool[,] visited)
+        {
+            int numOfIslands = 0;
+            for (int i = 0; i < sea.GetLength(0); i++)
+            {
+                for (int j = 0; j < sea.GetLength(1); j++)
+                {
+                    if (visited[i, j])
+                    {
+                        continue;
+                    }
+                    if (sea[i, j] == 0)
+                    {
+                        visited[i, j] = true;
+                        continue;
+                    }
+                    numOfIslands++;
+
+                    floodFill(i, j, sea, visited);
+                }
+            }
+            return numOfIslands;
+        }
+
+        public static void floodFill(int row, int col, int[,] sea, bool[,] visited)
+        {
+            if (sea[row, col] == 0 || visited[row, col]) return;
+            visited[row, col] = true;
+            if (col < sea.GetLength(1) - 1) floodFill(row, col + 1, sea, visited);
+            if (row < sea.GetLength(0) - 1) floodFill(row + 1, col, sea, visited);
+            if (col > 0) floodFill(row, col - 1, sea, visited);
+            if (row > 0) floodFill(row - 1, col, sea, visited);
         }
 
         public static string KnotHash(string input)

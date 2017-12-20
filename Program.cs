@@ -18,8 +18,8 @@ namespace AdventOfCode2017
             
 
             int day = DateTime.Now.Day;
-            Console.SetBufferSize(400, 10000);
-            Console.SetWindowSize(180, 45);
+            Console.SetBufferSize(500, 10000);
+            Console.SetWindowSize(200, 45);
             var sw = new Stopwatch();
             Console.WriteLine("Day " + day + Environment.NewLine);
             var inputFilename = "..\\..\\Input\\Day" + day + ".txt";
