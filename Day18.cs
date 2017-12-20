@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AdventOfCode2018
+namespace AdventOfCode2017
 {
     static class Day18
     {
